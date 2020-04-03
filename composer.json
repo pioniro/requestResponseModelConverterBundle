@@ -10,7 +10,7 @@
     "pioniro/request-response-model": "^1.0",
     "symfony/dependency-injection": "^3.3 || ^4.0 || ^5.0",
     "symfony/framework-bundle": "^3.0 || ^4.0 || ^5.0",
-    "symfony/mime": "^5.0",
+    "symfony/mime": "^3.0 || ^4.0 || ^5.0",
     "symfony/validator": "^3.0 || ^4.0 || ^5.0"
   },
   "suggest": {
