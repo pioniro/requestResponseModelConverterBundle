@@ -45,6 +45,7 @@ class RequestModelArgumentResolver implements ArgumentValueResolverInterface
      */
     public function supports(Request $request, ArgumentMetadata $argument)
     {
+        if (empty($argument->getType())) return false;
         foreach (class_implements($argument->getType()) as $inter) {
             if ($inter === RequestModelInterface::class)
                 return true;
