@@ -23,8 +23,13 @@
             <argument type="service" id="serializer" on-invalid="null"/>
         </service>
         <service id="rrm_converter.request_resolver" class="Pioniro\RequestResponseModelConverterBundle\Service\RequestModelArgumentResolver" >
+            <tag name="controller.argument_value_resolver" proirity="50" />
             <argument type="service" id="rrm_converter.serializer"/>
             <argument type="service" id="event_dispatcher"/>
+        </service>
+        <service id="rrm_converter.request_validator" class="Pioniro\RequestResponseModelConverterBundle\EventSubscriber\ValidateSubscriber" >
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="validator"/>
         </service>
     </services>
 </container>

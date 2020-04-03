@@ -51,7 +51,7 @@ class ResponseSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::VIEW => 'onControllerResponse',
+            KernelEvents::VIEW => 'onModelResponse',
         ];
     }
 

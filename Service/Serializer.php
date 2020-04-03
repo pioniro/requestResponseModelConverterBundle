@@ -41,8 +41,11 @@ class Serializer
     public function serialize($data, $format, $context = []): string
     {
         if ($this->jmsSerializer instanceof JMSSerializer) {
-            $ctx = new SerializationContext();
-            $ctx->setGroups($context);
+            $ctx = null;
+            if(count($context) > 0) {
+                $ctx = new SerializationContext();
+                $ctx->setGroups($context);
+            }
             return $this->jmsSerializer->serialize($data, $format, $ctx);
         }
         return $this->symfonySerializer->serialize($data, $format, ['groups' => $context]);
@@ -51,8 +54,12 @@ class Serializer
     public function deserialize($string, $type, $format, $context = [])
     {
         if ($this->jmsSerializer instanceof JMSSerializer) {
-            $ctx = new DeserializationContext();
-            $ctx->setGroups($context);
+
+            $ctx = null;
+            if(count($context) > 0) {
+                $ctx = new DeserializationContext();
+                $ctx->setGroups($context);
+            }
             return $this->jmsSerializer->deserialize($string, $type, $format, $ctx);
         }
         return $this->symfonySerializer->deserialize($string, $type, $format, ['groups' => $context]);

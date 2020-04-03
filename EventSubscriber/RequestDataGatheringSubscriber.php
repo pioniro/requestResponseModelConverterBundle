@@ -42,9 +42,9 @@ class RequestDataGatheringSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [Events::REQUEST_GATHERING => [
-            'requestGatheringBody' => -90,
-            'requestGatheringContent' => -91,
-            'requestGatheringQuery' => -92,
+            ['requestGatheringBody', -90],
+            ['requestGatheringContent', -91],
+            ['requestGatheringQuery', -92],
         ]];
     }
 
