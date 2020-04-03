@@ -1,0 +1,39 @@
+{
+  "name": "pioniro/request-response-model-converter-bundle",
+  "description": "Serializes and unserializes your request and response models",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "require": {
+    "php": "^7.1",
+    "ext-json": "*",
+    "pioniro/contextable-exception": "^1.0",
+    "pioniro/request-response-model": "^1.0",
+    "symfony/dependency-injection": "^3.3 || ^4.0 || ^5.0",
+    "symfony/framework-bundle": "^3.0 || ^4.0 || ^5.0",
+    "symfony/mime": "^5.0",
+    "symfony/validator": "^3.0 || ^4.0 || ^5.0"
+  },
+  "suggest": {
+    "jms/serializer": "^2.3|^3.0",
+    "symfony/serializer-pack": "^1.0"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "^5.0"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Pioniro\\RequestResponseModelConverterBundle\\": ""
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Pioniro\\RequestResponseModelConverterBundle\\Tests\\": "Tests/"
+    }
+  }
+}

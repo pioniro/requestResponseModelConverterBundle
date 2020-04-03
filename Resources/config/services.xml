@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="rrm_converter.request.listener" class="Pioniro\RequestResponseModelConverterBundle\EventSubscriber\RequestDataGatheringSubscriber" public="false">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="rrm_converter.format_provider" />
+        </service>
+
+        <service id="rrm_converter.response.listener" class="Pioniro\RequestResponseModelConverterBundle\EventSubscriber\ResponseSubscriber" public="false">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="rrm_converter.serializer" />
+            <argument type="service" id="rrm_converter.format_provider" />
+            <argument type="service" id="mime_types" />
+        </service>
+
+        <service id="rrm_converter.format_provider" class="Pioniro\RequestResponseModelConverterBundle\Service\FormatProvider" />
+        <service id="rrm_converter.serializer" class="Pioniro\RequestResponseModelConverterBundle\Service\Serializer" >
+            <argument type="service" id="jms_serializer" on-invalid="null"/>
+            <argument type="service" id="serializer" on-invalid="null"/>
+        </service>
+        <service id="rrm_converter.request_resolver" class="Pioniro\RequestResponseModelConverterBundle\Service\RequestModelArgumentResolver" >
+            <argument type="service" id="rrm_converter.serializer"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+    </services>
+</container>

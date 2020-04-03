@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         bootstrap="vendor/autoload.php"
+>
+
+    <testsuites>
+        <testsuite name="RequestResponseModelConverterBundle tests">
+            <directory>Tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <log type="coverage-html" target="build/coverage" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="junit" target="build/logs/junit.xml"/>
+    </logging>
+
+    <filter>
+        <whitelist>
+            <directory>.</directory>
+            <exclude>
+                <directory>bin</directory>
+                <directory>vendor</directory>
+                <directory>Tests</directory>
+                <directory>Resources</directory>
+                <directory>Event</directory>
+                <directory>DependencyInjection</directory>
+                <directory>Exception</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
